@@ -1,6 +1,11 @@
 # Go Icon Set
 Tool for making a Pixel Art web Icons set from a spritesheet (Asesprite).
 
+*Reference*
+Best icon set ever: Shigetaka Kurita
+https://www.moma.org/collection/works/196070
+
+
 ## How it works
 - Take a spritesheet.png, tell it the icon size 16x16, number of columns and go.
 - Optional to make a json sheet with names for the icons. Otherwise defaults to numbered.

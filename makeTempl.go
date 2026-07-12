@@ -28,7 +28,7 @@ func WriteTemplPackage(outputDir string, compiledPaths map[string]string) {
 	// Build package icons.go with global defaults injection state manager APIs
 	// Inside makeTempl.go -> WriteTemplPackage function:
 
-	code := `package temple_icons
+	code := `package templ_icons
 
 import (
 	"context"
@@ -54,7 +54,7 @@ func SetGlobalDefaults(cfg IconConfig) {
 }
 
 func buildStyleAttr(cfgs []IconConfig) string {
-	cfg := currentDefault // 🔥 FIX: added the colon here so it declares the variable
+	cfg := currentDefault 
 	if len(cfgs) > 0 {
 		if cfgs[0].Size != ""  { cfg.Size = cfgs[0].Size }
 		if cfgs[0].Color != "" { cfg.Color = cfgs[0].Color }
@@ -83,5 +83,5 @@ func %s(cfg ...IconConfig) templ.Component {
 		fmt.Printf("❌ Failed to compile icon package: %v\n", err)
 		return
 	}
-	fmt.Println("🚀 Sub-package folder 'temple_icons' compiled successfully!")
+	fmt.Println("🚀 Sub-package folder 'templ_icons' compiled successfully!")
 }

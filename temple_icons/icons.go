@@ -1,9 +1,10 @@
-package temple_icons
+package templ_icons
 
 import (
 	"context"
 	"fmt"
 	"io"
+
 	"github.com/a-h/templ"
 )
 
@@ -19,15 +20,23 @@ var currentDefault = IconConfig{
 
 // SetGlobalDefaults alters the rendering token layout definitions application-wide
 func SetGlobalDefaults(cfg IconConfig) {
-	if cfg.Size != ""  { currentDefault.Size = cfg.Size }
-	if cfg.Color != "" { currentDefault.Color = cfg.Color }
+	if cfg.Size != "" {
+		currentDefault.Size = cfg.Size
+	}
+	if cfg.Color != "" {
+		currentDefault.Color = cfg.Color
+	}
 }
 
 func buildStyleAttr(cfgs []IconConfig) string {
-	cfg := currentDefault // 🔥 FIX: added the colon here so it declares the variable
+	cfg := currentDefault //
 	if len(cfgs) > 0 {
-		if cfgs[0].Size != ""  { cfg.Size = cfgs[0].Size }
-		if cfgs[0].Color != "" { cfg.Color = cfgs[0].Color }
+		if cfgs[0].Size != "" {
+			cfg.Size = cfgs[0].Size
+		}
+		if cfgs[0].Color != "" {
+			cfg.Color = cfgs[0].Color
+		}
 	}
 	return fmt.Sprintf("style=\"width: %s; height: %s; color: %s; display: inline-block; vertical-align: middle;\"", cfg.Size, cfg.Size, cfg.Color)
 }

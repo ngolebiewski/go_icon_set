@@ -38,7 +38,7 @@ func initConfig() *Config {
 		SourceFile:   "spritesheet.png", // Looks in current directory
 		OutputDir:    "icons",           // Subfolder in current directory
 		SourceList:   make(map[string]string),
-		PackageDir:   "./temple_icons", // Sub-package folder kept right at top-level
+		PackageDir:   "./templ_icons", // Sub-package folder kept right at top-level
 		JSPackageDir: "./js_icons",
 	}
 	return &cfg
@@ -218,7 +218,7 @@ func main() {
 	// Generate the visual cheat sheet layout grid image file (from cheatsheet.go)
 	GenerateCheatSheet(cfg)
 
-	// Compile everything together into the temple_icons package distribution folder (from makeTempl.go)
+	// Compile everything together into the templ_icons package distribution folder (from makeTempl.go)
 	WriteTemplPackage(cfg.PackageDir, pathsMap)
 
 	// Generates your JS Frontend library instantly from the exact same paths!
