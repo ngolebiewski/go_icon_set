@@ -63,7 +63,7 @@ func Book(cfg ...IconConfig) templ.Component {
 func Bricks(cfg ...IconConfig) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 		style := buildStyleAttr(cfg)
-		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M3,1h1v1h-1z M12,1h1v1h-1z M3,2h1v1h-1z M12,2h1v1h-1z M0,3h16v1h-16z M8,4h1v1h-1z M15,4h1v1h-1z M8,5h1v1h-1z M15,5h1v1h-1z M8,6h1v1h-1z M15,6h1v1h-1z M0,7h16v1h-16z M3,8h1v1h-1z M12,8h1v1h-1z M3,9h1v1h-1z M12,9h1v1h-1z M3,10h1v1h-1z M12,10h1v1h-1z M0,11h16v1h-16z M8,12h1v1h-1z M15,12h1v1h-1z M8,13h1v1h-1z M15,13h1v1h-1z M8,14h1v1h-1z M15,14h1v1h-1z M0,15h16v1h-16z\" /></svg>", style))
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M3,0h1v1h-1z M12,0h1v1h-1z M3,1h1v1h-1z M12,1h1v1h-1z M3,2h1v1h-1z M12,2h1v1h-1z M0,3h16v1h-16z M8,4h1v1h-1z M15,4h1v1h-1z M8,5h1v1h-1z M15,5h1v1h-1z M8,6h1v1h-1z M15,6h1v1h-1z M0,7h16v1h-16z M3,8h1v1h-1z M12,8h1v1h-1z M3,9h1v1h-1z M12,9h1v1h-1z M3,10h1v1h-1z M12,10h1v1h-1z M0,11h16v1h-16z M8,12h1v1h-1z M15,12h1v1h-1z M8,13h1v1h-1z M15,13h1v1h-1z M8,14h1v1h-1z M15,14h1v1h-1z M0,15h16v1h-16z\" /></svg>", style))
 		return err
 	})
 }
@@ -72,7 +72,7 @@ func Bricks(cfg ...IconConfig) templ.Component {
 func Building(cfg ...IconConfig) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 		style := buildStyleAttr(cfg)
-		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M4,0h9v1h-9z M4,1h1v1h-1z M6,1h1v1h-1z M8,1h1v1h-1z M10,1h1v1h-1z M12,1h1v1h-1z M4,2h9v1h-9z M4,3h1v1h-1z M6,3h1v1h-1z M8,3h1v1h-1z M10,3h1v1h-1z M12,3h1v1h-1z M4,4h9v1h-9z M4,5h1v1h-1z M6,5h1v1h-1z M8,5h1v1h-1z M10,5h1v1h-1z M12,5h1v1h-1z M4,6h9v1h-9z M4,7h1v1h-1z M6,7h1v1h-1z M8,7h1v1h-1z M10,7h1v1h-1z M12,7h1v1h-1z M4,8h9v1h-9z M4,9h1v1h-1z M6,9h1v1h-1z M8,9h1v1h-1z M10,9h1v1h-1z M12,9h1v1h-1z M4,10h9v1h-9z M4,11h1v1h-1z M6,11h1v1h-1z M8,11h1v1h-1z M10,11h1v1h-1z M12,11h1v1h-1z M4,12h9v1h-9z M4,13h1v1h-1z M6,13h1v1h-1z M9,13h1v1h-1z M12,13h1v1h-1z M4,14h1v1h-1z M6,14h1v1h-1z M9,14h1v1h-1z M12,14h1v1h-1z M4,15h1v1h-1z M6,15h1v1h-1z M9,15h1v1h-1z M12,15h1v1h-1z\" /></svg>", style))
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M4,0h9v1h-9z M4,1h1v1h-1z M6,1h1v1h-1z M8,1h1v1h-1z M10,1h1v1h-1z M12,1h1v1h-1z M4,2h9v1h-9z M4,3h1v1h-1z M6,3h1v1h-1z M8,3h1v1h-1z M10,3h1v1h-1z M12,3h1v1h-1z M4,4h9v1h-9z M4,5h1v1h-1z M6,5h1v1h-1z M8,5h1v1h-1z M10,5h1v1h-1z M12,5h1v1h-1z M4,6h9v1h-9z M4,7h1v1h-1z M6,7h1v1h-1z M8,7h1v1h-1z M10,7h1v1h-1z M12,7h1v1h-1z M4,8h9v1h-9z M4,9h1v1h-1z M6,9h1v1h-1z M8,9h1v1h-1z M10,9h1v1h-1z M12,9h1v1h-1z M4,10h9v1h-9z M4,11h1v1h-1z M6,11h1v1h-1z M8,11h1v1h-1z M10,11h1v1h-1z M12,11h1v1h-1z M4,12h9v1h-9z M4,13h1v1h-1z M6,13h1v1h-1z M9,13h1v1h-1z M12,13h1v1h-1z M4,14h1v1h-1z M6,14h1v1h-1z M9,14h1v1h-1z M12,14h1v1h-1z M4,15h6v1h-6z M12,15h1v1h-1z\" /></svg>", style))
 		return err
 	})
 }
@@ -162,7 +162,7 @@ func DownTriangle(cfg ...IconConfig) templ.Component {
 func Facebook(cfg ...IconConfig) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 		style := buildStyleAttr(cfg)
-		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M5,2h5v1h-5z M4,3h7v1h-7z M3,4h9v1h-9z M2,5h6v1h-6z M10,5h3v1h-3z M2,6h5v1h-5z M8,6h5v1h-5z M2,7h5v1h-5z M8,7h5v1h-5z M2,8h4v1h-4z M9,8h4v1h-4z M2,9h5v1h-5z M8,9h5v1h-5z M3,10h4v1h-4z M8,10h4v1h-4z M4,11h3v1h-3z M8,11h3v1h-3z M5,12h2v1h-2z M8,12h2v1h-2z\" /></svg>", style))
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M5,2h5v1h-5z M4,3h7v1h-7z M3,4h4v1h-4z M10,4h2v1h-2z M2,5h4v1h-4z M10,5h3v1h-3z M2,6h4v1h-4z M8,6h5v1h-5z M2,7h4v1h-4z M8,7h5v1h-5z M2,8h3v1h-3z M10,8h3v1h-3z M2,9h3v1h-3z M10,9h3v1h-3z M3,10h3v1h-3z M8,10h4v1h-4z M4,11h2v1h-2z M8,11h3v1h-3z M5,12h1v1h-1z M8,12h2v1h-2z\" /></svg>", style))
 		return err
 	})
 }
@@ -252,7 +252,7 @@ func IntersectionEmpty(cfg ...IconConfig) templ.Component {
 func IntersectionFilled(cfg ...IconConfig) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 		style := buildStyleAttr(cfg)
-		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M3,0h1v1h-1z M12,0h1v1h-1z M3,4h4v1h-4z M8,4h4v1h-4z M2,5h1v1h-1z M7,5h1v1h-1z M12,5h1v1h-1z M1,6h1v1h-1z M6,6h3v1h-3z M13,6h1v1h-1z M0,7h1v1h-1z M5,7h5v1h-5z M14,7h1v1h-1z M0,8h1v1h-1z M5,8h5v1h-5z M14,8h1v1h-1z M0,9h1v1h-1z M5,9h5v1h-5z M14,9h1v1h-1z M0,10h1v1h-1z M5,10h5v1h-5z M14,10h1v1h-1z M1,11h1v1h-1z M6,11h3v1h-3z M13,11h1v1h-1z M2,12h1v1h-1z M7,12h1v1h-1z M12,12h1v1h-1z M3,13h4v1h-4z M8,13h4v1h-4z\" /></svg>", style))
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M3,4h4v1h-4z M8,4h4v1h-4z M2,5h1v1h-1z M7,5h1v1h-1z M12,5h1v1h-1z M1,6h1v1h-1z M6,6h3v1h-3z M13,6h1v1h-1z M0,7h1v1h-1z M5,7h5v1h-5z M14,7h1v1h-1z M0,8h1v1h-1z M5,8h5v1h-5z M14,8h1v1h-1z M0,9h1v1h-1z M5,9h5v1h-5z M14,9h1v1h-1z M0,10h1v1h-1z M5,10h5v1h-5z M14,10h1v1h-1z M1,11h1v1h-1z M6,11h3v1h-3z M13,11h1v1h-1z M2,12h1v1h-1z M7,12h1v1h-1z M12,12h1v1h-1z M3,13h4v1h-4z M8,13h4v1h-4z\" /></svg>", style))
 		return err
 	})
 }
