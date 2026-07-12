@@ -6,9 +6,10 @@ Tool for making a Pixel Art web Icons set from a spritesheet (Asesprite).
     -Optional to make a json sheet with names for the icons. Otherwise defaults to numbered.
 
 ## Roadmap
-    -[] Finish sample icon set
     -[x] Make a Templ + Go package
-    -[] JavaScript/TypeScript package for React, Next, Nuxt, VanillaJS, etc etc etc
+    -[x] JavaScript/TypeScript package for React, Next, Nuxt, VanillaJS, etc etc etc
+    -[] Finish sample icon set
+    -[] When finalized, version and add js version to npm
 
 
 ![spritesheet with labels](icons/cheatsheet.png)
@@ -93,4 +94,116 @@ const navbarHTML = `
   <nav class="nav-bar text-slate-200">
      ${Hamburger()} ${Sword({ color: '#f43f5e' })} </nav>
 `;
+```
+
+
+# JS Icon Components Integration Guide
+
+This directory contains your auto-generated cross-platform icon distribution bundles. Every file is completely self-contained and embeds raw vector data directly to eliminate layout shift flicker and network roundtrips.
+
+---
+
+## 1. String Components ("string-components.js")
+**Best For:** Vanilla JavaScript, Alpine.js, HTMX, or lightweight projects. Returns raw HTML strings.
+
+### Usage
+```javascript
+import { setGlobalDefaults, Home, Sword } from './js_icons/string-components.js';
+
+// Optional: Set global styles once at application boot
+setGlobalDefaults({
+	size: "24px",
+	color: "currentColor" // Inherits color from parent text classes
+});
+
+// Render anywhere strings are parsed into HTML
+document.getElementById('app').innerHTML = \`
+	<div class="nav-bar">
+		\${Home()} \${Sword({ color: '#f43f5e', size: '32px' })} </div>
+;
+```
+
+---
+
+## 2. Native Web Components ("web-components.js")
+**Best For:** Modern Single-Page Apps (Vue, Svelte, Vite) or Vanilla apps seeking 100% safe DOM manipulation without raw string injection.
+
+### Usage
+Import this file **exactly once** at the absolute root entry point of your frontend architecture (e.g., "main.js" or "index.js"). 
+
+```javascript
+import './js_icons/web-components.js'; 
+// That's it! Elements register globally with the browser engine.
+```
+
+Now, use the custom tags anywhere in your templates without importing them ever again:
+
+```html
+<icon-home size="24px" color="white"></icon-home>
+<icon-sword size="32px" color="#f43f5e"></icon-sword>
+```
+
+---
+
+## 3. React Components ("react-components.jsx")
+**Best For:** React.js, Next.js (Client Components), Vite + React, Remix, or Astro projects.
+
+### Usage
+These are compiled as standard functional Virtual DOM components. They are fully compatible with bundler tree-shaking and accept standard JSX property spreads.
+
+```jsx
+import React from 'react';
+import { Home, Sword } from './js_icons/react-components.jsx';
+
+export function Navigation() {
+	return (
+		<nav className="flex gap-4 bg-slate-900 p-4">
+			{/* Standard icon */}
+			<Home size="24px" color="white" />
+
+			{/* Custom attributes pass through safely via props spread */}
+			<Sword 
+				size="2rem" 
+				color="#f43f5e" 
+				className="hover:scale-110 transition-transform"
+				onClick={() => console.log("Equipped!")} 
+			/>
+		</nav>
+	);
+}
+```
+
+---
+
+## 4. SSR Pure Dictionary ("ssr-dictionary.js")
+**Best For:** Server-Side Frameworks (Nuxt, SvelteKit, Astro) that need to securely draw vectors on the server before shipping HTML down to the browser.
+
+### Usage
+Because this format is just a flat key-value data string database, your meta-framework templates loop or reference the keys directly to build server-painted inline SVGs.
+
+#### Example in Vue / Nuxt:
+```typescript
+<script setup>
+import { IconVectors } from './js_icons/ssr-dictionary.js';
+
+const props = defineProps({
+	name: String, // e.g., 'home' or 'sword'
+	size: { type: String, default: '16px' },
+	color: { type: String, default: 'white' }
+});
+
+const pathData = computed(() => IconVectors[props.name]);
+</script>
+
+<template>
+  <svg 
+	xmlns="http://www.w3.org/2000/svg" 
+	viewBox="0 0 16 16" 
+	shape-rendering="crispEdges" 
+	fill="currentColor"
+	:style="{ width: size, height: size, color: color, display: 'inline-block', verticalAlign: 'middle' }"
+  >
+	<path :d="pathData" />
+  </svg>
+</template>
 ```
