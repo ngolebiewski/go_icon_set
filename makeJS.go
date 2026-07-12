@@ -8,7 +8,7 @@ import (
 )
 
 // WriteJSPackage compiles your vectors into four distinct frontend flavors
-func WriteJSPackage(outputDir string, compiledPaths map[string]string) {
+func WriteJSPackage(outputDir string, compiledPaths map[string]string, sortedKeys []string) {
 	_ = os.MkdirAll(outputDir, 0755)
 
 	// ==========================================
@@ -74,7 +74,9 @@ export const IconVectors = {
 `
 
 	// Loop once to dynamically compile all targets synchronously
-	for name, path := range compiledPaths {
+	for _, name := range sortedKeys {
+		path := compiledPaths[name] // Safe extraction by guaranteed alphabetic key name
+
 		goName := toTitleCase(name)
 		tagName := "icon-" + strings.ToLower(name)
 
@@ -87,7 +89,7 @@ export const IconVectors = {
 		// 3. React Append
 		reactCode += fmt.Sprintf("export const %s = (props) => <Icon path=%q {...props} />;\n", goName, path)
 
-		// 4. SSR Dictionary Append (🔥 FIX: Explicitly quote object literal keys to prevent parsing drops)
+		// 4. SSR Dictionary Append
 		ssrCode += fmt.Sprintf("\t%q: %q,\n", name, path)
 	}
 

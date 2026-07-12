@@ -8,6 +8,7 @@ import (
 	"image/png"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 )
 
@@ -218,11 +219,17 @@ func main() {
 	// Generate the visual cheat sheet layout grid image file (from cheatsheet.go)
 	GenerateCheatSheet(cfg)
 
+	var sortedKeys []string
+	for name := range pathsMap {
+		sortedKeys = append(sortedKeys, name)
+	}
+	sort.Strings(sortedKeys)
+
 	// Compile everything together into the templ_icons package distribution folder (from makeTempl.go)
-	WriteTemplPackage(cfg.PackageDir, pathsMap)
+	WriteTemplPackage(cfg.PackageDir, pathsMap, sortedKeys)
 
 	// Generates your JS Frontend library instantly from the exact same paths!
-	WriteJSPackage(cfg.JSPackageDir, pathsMap)
+	WriteJSPackage(cfg.JSPackageDir, pathsMap, sortedKeys)
 
 	fmt.Println("🎉 All systems complete!")
 }

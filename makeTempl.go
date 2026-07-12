@@ -18,7 +18,7 @@ func toTitleCase(input string) string {
 }
 
 // WriteTemplPackage compiles the stored vector paths into a usable sub-package component file
-func WriteTemplPackage(outputDir string, compiledPaths map[string]string) {
+func WriteTemplPackage(outputDir string, compiledPaths map[string]string, sortedKeys []string) {
 	// Ensure the target subfolder exists cleanly
 	if err := os.MkdirAll(outputDir, 0755); err != nil {
 		fmt.Printf("❌ Failed to create package output dir: %v\n", err)
@@ -63,9 +63,11 @@ func buildStyleAttr(cfgs []IconConfig) string {
 }
 `
 
-	for name, path := range compiledPaths {
+	for _, name := range sortedKeys {
+		path := compiledPaths[name] // Extract the path using the sorted key name
 		goName := toTitleCase(name)
 
+		// Your existing string generation logic remains exactly the same:
 		code += fmt.Sprintf(`
 // %s renders the sharp vector icon for "%s"
 func %s(cfg ...IconConfig) templ.Component {
