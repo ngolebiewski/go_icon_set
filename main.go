@@ -12,12 +12,13 @@ import (
 )
 
 type Config struct {
-	IconWidth  int    // icon width ie 16px
-	IconHeight int    // icon height
-	Columns    int    // number of icons in a row
-	SourceFile string // path to spritesheet, defaults to current directory
-	OutputDir  string // Directory where to save files, defaults to current directory
-	PackageDir string // for the Templ Build
+	IconWidth    int    // icon width ie 16px
+	IconHeight   int    // icon height
+	Columns      int    // number of icons in a row
+	SourceFile   string // path to spritesheet, defaults to current directory
+	OutputDir    string // Directory where to save files, defaults to current directory
+	PackageDir   string // for the Templ Build
+	JSPackageDir string // for the JavaScript Build
 
 	// JSON Source List mapping a grid slot index string to an icon name
 	SourceList map[string]string
@@ -31,13 +32,14 @@ type Config struct {
 
 func initConfig() *Config {
 	cfg := Config{
-		IconWidth:  16,
-		IconHeight: 16,
-		Columns:    10,
-		SourceFile: "spritesheet.png", // Looks in current directory
-		OutputDir:  "icons",           // Subfolder in current directory
-		SourceList: make(map[string]string),
-		PackageDir: "./temple_icons", // Sub-package folder kept right at top-level
+		IconWidth:    16,
+		IconHeight:   16,
+		Columns:      10,
+		SourceFile:   "spritesheet.png", // Looks in current directory
+		OutputDir:    "icons",           // Subfolder in current directory
+		SourceList:   make(map[string]string),
+		PackageDir:   "./temple_icons", // Sub-package folder kept right at top-level
+		JSPackageDir: "./js_icons",
 	}
 	return &cfg
 }
@@ -209,15 +211,18 @@ func main() {
 		os.Exit(1)
 	}
 
-	// 1. Slice image assets and collect path string maps
+	// Slice image assets and collect path string maps
 	pathsMap := sliceSpritesheet(cfg)
 	fmt.Println("🎉 Stage 1 complete, SVG and PNG preview files rendered!")
 
-	// 2. Generate the visual cheat sheet layout grid image file (from cheatsheet.go)
+	// Generate the visual cheat sheet layout grid image file (from cheatsheet.go)
 	GenerateCheatSheet(cfg)
 
-	// 3. Compile everything together into the temple_icons package distribution folder (from makeTempl.go)
+	// Compile everything together into the temple_icons package distribution folder (from makeTempl.go)
 	WriteTemplPackage(cfg.PackageDir, pathsMap)
+
+	// Generates your JS Frontend library instantly from the exact same paths!
+	WriteJSPackage(cfg.JSPackageDir, pathsMap)
 
 	fmt.Println("🎉 All systems complete!")
 }

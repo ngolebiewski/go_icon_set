@@ -1,0 +1,41 @@
+export interface IconConfig {
+	size?: string;
+	color?: string;
+}
+
+export function setGlobalDefaults(cfg: IconConfig): void;
+type IconComponent = (cfg?: IconConfig) => string;
+export const UpTriangle: IconComponent;
+export const Skull: IconComponent;
+export const Search: IconComponent;
+export const PencilVertical: IconComponent;
+export const Github: IconComponent;
+export const DownTriangle: IconComponent;
+export const In: IconComponent;
+export const HeartEmpty: IconComponent;
+export const Book: IconComponent;
+export const Stairs: IconComponent;
+export const Profile: IconComponent;
+export const Pdf: IconComponent;
+export const Instagram: IconComponent;
+export const NirvanaFace: IconComponent;
+export const Home: IconComponent;
+export const Moon: IconComponent;
+export const QuestionBox: IconComponent;
+export const HeartFilled: IconComponent;
+export const PencilDiaganol: IconComponent;
+export const Globe: IconComponent;
+export const Linkedin: IconComponent;
+export const Doc: IconComponent;
+export const Sword: IconComponent;
+export const Coin: IconComponent;
+export const Out: IconComponent;
+export const Camera: IconComponent;
+export const Itchio: IconComponent;
+export const CheckboxUnchecked: IconComponent;
+export const Facebook: IconComponent;
+export const Hamburger: IconComponent;
+export const Sun: IconComponent;
+export const Calendar: IconComponent;
+export const QuestionMark: IconComponent;
+export const CheckboxChecked: IconComponent;

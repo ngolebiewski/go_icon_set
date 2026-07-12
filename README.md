@@ -7,14 +7,14 @@ Tool for making a Pixel Art web Icons set from a spritesheet (Asesprite).
 
 ## Roadmap
     -[] Finish sample icon set
-    -[] Make a Templ + Go package
+    -[x] Make a Templ + Go package
     -[] JavaScript/TypeScript package for React, Next, Nuxt, VanillaJS, etc etc etc
 
 
 ![spritesheet with labels](icons/cheatsheet.png)
 
 
-# Use in Templ
+# Use in Templ/GO
 ## Step 1: Configure Your Global Style (Optional)
 - If you don't want to specify colors and sizes every single time you call an icon, you can set a global fallback style right when your main web application starts up (usually in your website's main main.go).
 
@@ -69,4 +69,28 @@ templ Navigation() {
 	</nav>
 }
 
+```
+
+# Use in JavaScript/TypeScript Frontends
+
+
+-Any JavaScript or TypeScript project can import these components seamlessly.
+
+-If you use innerHTML frameworks (like native web applications, Alpine.js, or vanilla JS components), you call them directly. If you use a framework like Vue, Nuxt, React, or Svelte, you can inject them securely using their respective dynamic HTML utility bindings (such as v-html in Vue/Nuxt or dangerouslySetInnerHTML in React).
+
+```JavaScript
+
+import { setGlobalDefaults, Hamburger, Sword } from './js_icons/icons.js';
+
+// Configure everything once at entry point boot
+setGlobalDefaults({
+    size: "24px",
+    color: "currentColor"
+});
+
+// Render dynamic raw string components instantly without network delay overhead:
+const navbarHTML = `
+  <nav class="nav-bar text-slate-200">
+     ${Hamburger()} ${Sword({ color: '#f43f5e' })} </nav>
+`;
 ```
