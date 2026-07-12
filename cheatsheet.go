@@ -16,9 +16,20 @@ import (
 )
 
 // GenerateCheatSheet creates a visual directory layout of all your current icons
+// GenerateCheatSheet creates a visual directory layout of all your current icons
 func GenerateCheatSheet(cfg *Config) {
 	padding := 16
-	boxSize := 48 // Area allocated for the 16x16 icon + sub-label text
+
+	// 🔥 Dynamic layout sizing: If icons are tiny, double them and give them a bigger box
+	scaleFactor := 1
+	if cfg.IconWidth < 32 && cfg.IconHeight < 32 {
+		scaleFactor = 2
+	}
+
+	boxSize := 48
+	if scaleFactor > 1 {
+		boxSize = 64 // Expand container box to accommodate 32x32 upscaled graphics cleanly
+	}
 
 	// Dynamic vertical height calculation row-by-row
 	totalRows := (cfg.TotalIcons + cfg.Columns - 1) / cfg.Columns
@@ -37,7 +48,7 @@ func GenerateCheatSheet(cfg *Config) {
 		Face: basicfont.Face7x13,
 	}
 
-	fmt.Printf("🎨 Generating Cheat Sheet canvas (%dx%d pixels)...\n", sheetW, sheetH)
+	fmt.Printf("🎨 Generating Cheat Sheet canvas (%dx%d pixels) [Scale: %dx]...\n", sheetW, sheetH, scaleFactor)
 
 	for i := 0; i < cfg.TotalIcons; i++ {
 		col := i % cfg.Columns
@@ -57,19 +68,34 @@ func GenerateCheatSheet(cfg *Config) {
 
 		// Draw icon into the exact dead center of the box grid segment
 		if name != "blank" {
-			iconX := boxX + (boxSize-cfg.IconWidth)/2
-			iconY := boxY + (boxSize-cfg.IconHeight)/2
+			scaledW := cfg.IconWidth * scaleFactor
+			scaledH := cfg.IconHeight * scaleFactor
+
+			iconX := boxX + (boxSize-scaledW)/2
+			iconY := boxY + (boxSize-scaledH)/2
 
 			srcX := col * cfg.IconWidth
 			srcY := row * cfg.IconHeight
-			cropRect := image.Rect(srcX, srcY, srcX+cfg.IconWidth, srcY+cfg.IconHeight)
 
-			draw.Draw(cheatCanvas, image.Rect(iconX, iconY, iconX+cfg.IconWidth, iconY+cfg.IconHeight), cfg.LoadedImage, cropRect.Min, draw.Over)
+			// 🔥 Nearest-Neighbor Upscaling Engine Loop
+			// Maps every canvas coordinate target step back to its original source coordinate index
+			for dy := 0; dy < scaledH; dy++ {
+				for dx := 0; dx < scaledW; dx++ {
+					origX := srcX + (dx / scaleFactor)
+					origY := srcY + (dy / scaleFactor)
+
+					// Pull original pixel color values safely from source sheet coordinates
+					pixelColor := cfg.LoadedImage.At(origX, origY)
+
+					// Paint onto the canvas destination matrix coordinates
+					cheatCanvas.Set(iconX+dx, iconY+dy, pixelColor)
+				}
+			}
 		}
 
 		// Truncate overly long labels so they stay inside the box bounds
-		if len(name) > 6 {
-			name = name[:5] + ".."
+		if len(name) > (boxSize / 8) {
+			name = name[:(boxSize/8)-1] + ".."
 		}
 
 		textX := boxX + (boxSize-len(name)*7)/2
