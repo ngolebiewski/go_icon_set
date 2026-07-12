@@ -2,15 +2,29 @@
 Tool for making a Pixel Art web Icons set from a spritesheet (Asesprite).
 
 ## How it works
-    -Take a spritesheet.png, tell it the icon size 16x16, number of columns and go.
-    -Optional to make a json sheet with names for the icons. Otherwise defaults to numbered.
+- Take a spritesheet.png, tell it the icon size 16x16, number of columns and go.
+- Optional to make a json sheet with names for the icons. Otherwise defaults to numbered.
+```json
+	{
+		"0": "hamburger",
+		"1": "doc",
+		"2": "sword",
+		...
+	}
+
+```
+- Optional to change the output folders
+- `go run .`
+- Auto generated a Templ/Go package and various JavaScript/TypeScript libraries to use in your frontend projects.
+
 
 ## Roadmap
-    -[x] Make a Templ + Go package
-    -[x] JavaScript/TypeScript package for React, Next, Nuxt, VanillaJS, etc etc etc
-    -[] Finish sample icon set
-    -[] When finalized, version and add js version to npm
-
+- [x] Make a Templ + Go package
+- [x] JavaScript/TypeScript package for React, Next, Nuxt, VanillaJS, etc.
+- [ ] Test on Templ and JS options
+- [ ] **Finish sample icon set**
+- [ ] When finalized, version and add JS version to npm
+---
 
 ![spritesheet with labels](icons/cheatsheet.png)
 
