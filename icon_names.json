@@ -33,7 +33,7 @@
   "31": "github",
   "32": "facebook",
   "33": "bluesky",
-  "34": "x",
+  "34": "x-social",
   "35": "itchio",
   "36": "steam",
   "37": "discord",
@@ -48,5 +48,9 @@
   "46": "building",
   "47": "sun-2",
   "48": "raster",
-  "49": "scribble"
+  "49": "scribble",
+  "50": "x-close",
+  "51": "trash",
+  "52": "watch",
+  "53": "disk"
 }

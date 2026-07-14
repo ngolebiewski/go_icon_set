@@ -140,6 +140,15 @@ func Discord(cfg ...IconConfig) templ.Component {
 	})
 }
 
+// Disk renders the sharp vector icon for "disk"
+func Disk(cfg ...IconConfig) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		style := buildStyleAttr(cfg)
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M1,0h15v1h-15z M0,1h1v1h-1z M3,1h1v1h-1z M12,1h1v1h-1z M15,1h1v1h-1z M0,2h1v1h-1z M3,2h1v1h-1z M8,2h3v1h-3z M12,2h1v1h-1z M15,2h1v1h-1z M0,3h1v1h-1z M3,3h1v1h-1z M7,3h1v1h-1z M10,3h1v1h-1z M12,3h1v1h-1z M15,3h1v1h-1z M0,4h1v1h-1z M3,4h1v1h-1z M7,4h1v1h-1z M10,4h1v1h-1z M12,4h1v1h-1z M15,4h1v1h-1z M0,5h1v1h-1z M3,5h1v1h-1z M7,5h3v1h-3z M12,5h1v1h-1z M15,5h1v1h-1z M0,6h1v1h-1z M3,6h1v1h-1z M12,6h1v1h-1z M15,6h1v1h-1z M0,7h1v1h-1z M3,7h9v1h-9z M15,7h1v1h-1z M0,8h1v1h-1z M15,8h1v1h-1z M0,9h1v1h-1z M15,9h1v1h-1z M0,10h1v1h-1z M4,10h9v1h-9z M15,10h1v1h-1z M0,11h1v1h-1z M3,11h1v1h-1z M12,11h1v1h-1z M15,11h1v1h-1z M0,12h1v1h-1z M3,12h1v1h-1z M12,12h1v1h-1z M15,12h1v1h-1z M0,13h1v1h-1z M3,13h1v1h-1z M12,13h1v1h-1z M15,13h1v1h-1z M0,14h1v1h-1z M3,14h1v1h-1z M12,14h1v1h-1z M15,14h1v1h-1z M0,15h15v1h-15z\" /></svg>", style))
+		return err
+	})
+}
+
 // Doc renders the sharp vector icon for "doc"
 func Doc(cfg ...IconConfig) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
@@ -464,6 +473,15 @@ func Sword(cfg ...IconConfig) templ.Component {
 	})
 }
 
+// Trash renders the sharp vector icon for "trash"
+func Trash(cfg ...IconConfig) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		style := buildStyleAttr(cfg)
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M6,0h4v1h-4z M6,1h1v1h-1z M9,1h1v1h-1z M2,2h12v1h-12z M2,3h1v1h-1z M13,3h1v1h-1z M2,4h12v1h-12z M3,5h1v1h-1z M12,5h1v1h-1z M3,6h1v1h-1z M5,6h1v1h-1z M7,6h1v1h-1z M9,6h1v1h-1z M12,6h1v1h-1z M3,7h1v1h-1z M5,7h1v1h-1z M7,7h1v1h-1z M9,7h1v1h-1z M12,7h1v1h-1z M3,8h1v1h-1z M5,8h1v1h-1z M7,8h1v1h-1z M9,8h1v1h-1z M12,8h1v1h-1z M3,9h1v1h-1z M5,9h1v1h-1z M7,9h1v1h-1z M9,9h1v1h-1z M12,9h1v1h-1z M3,10h1v1h-1z M5,10h1v1h-1z M7,10h1v1h-1z M9,10h1v1h-1z M12,10h1v1h-1z M3,11h1v1h-1z M5,11h1v1h-1z M7,11h1v1h-1z M9,11h1v1h-1z M12,11h1v1h-1z M3,12h1v1h-1z M5,12h1v1h-1z M7,12h1v1h-1z M9,12h1v1h-1z M12,12h1v1h-1z M3,13h1v1h-1z M5,13h1v1h-1z M7,13h1v1h-1z M9,13h1v1h-1z M12,13h1v1h-1z M3,14h1v1h-1z M12,14h1v1h-1z M3,15h10v1h-10z\" /></svg>", style))
+		return err
+	})
+}
+
 // UpTriangle renders the sharp vector icon for "up-triangle"
 func UpTriangle(cfg ...IconConfig) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
@@ -473,8 +491,26 @@ func UpTriangle(cfg ...IconConfig) templ.Component {
 	})
 }
 
-// X renders the sharp vector icon for "x"
-func X(cfg ...IconConfig) templ.Component {
+// Watch renders the sharp vector icon for "watch"
+func Watch(cfg ...IconConfig) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		style := buildStyleAttr(cfg)
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M5,1h5v1h-5z M5,2h5v1h-5z M5,3h5v1h-5z M4,4h1v1h-1z M10,4h1v1h-1z M3,5h1v1h-1z M7,5h1v1h-1z M11,5h1v1h-1z M2,6h1v1h-1z M7,6h1v1h-1z M12,6h1v1h-1z M2,7h1v1h-1z M7,7h1v1h-1z M12,7h1v1h-1z M2,8h1v1h-1z M7,8h3v1h-3z M12,8h2v1h-2z M2,9h1v1h-1z M12,9h1v1h-1z M2,10h1v1h-1z M12,10h1v1h-1z M3,11h1v1h-1z M11,11h1v1h-1z M4,12h1v1h-1z M10,12h1v1h-1z M5,13h5v1h-5z M5,14h5v1h-5z M5,15h5v1h-5z\" /></svg>", style))
+		return err
+	})
+}
+
+// XClose renders the sharp vector icon for "x-close"
+func XClose(cfg ...IconConfig) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		style := buildStyleAttr(cfg)
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M1,1h2v1h-2z M13,1h2v1h-2z M1,2h3v1h-3z M12,2h3v1h-3z M2,3h3v1h-3z M11,3h3v1h-3z M3,4h3v1h-3z M10,4h3v1h-3z M4,5h3v1h-3z M9,5h3v1h-3z M5,6h6v1h-6z M6,7h4v1h-4z M6,8h4v1h-4z M5,9h6v1h-6z M4,10h3v1h-3z M9,10h3v1h-3z M3,11h3v1h-3z M10,11h3v1h-3z M2,12h3v1h-3z M11,12h3v1h-3z M1,13h3v1h-3z M12,13h3v1h-3z M1,14h2v1h-2z M13,14h2v1h-2z\" /></svg>", style))
+		return err
+	})
+}
+
+// XSocial renders the sharp vector icon for "x-social"
+func XSocial(cfg ...IconConfig) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 		style := buildStyleAttr(cfg)
 		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M2,3h3v1h-3z M14,3h1v1h-1z M2,4h1v1h-1z M5,4h1v1h-1z M13,4h1v1h-1z M3,5h1v1h-1z M6,5h1v1h-1z M12,5h1v1h-1z M4,6h1v1h-1z M7,6h1v1h-1z M11,6h1v1h-1z M5,7h1v1h-1z M8,7h1v1h-1z M10,7h1v1h-1z M6,8h1v1h-1z M9,8h1v1h-1z M7,9h1v1h-1z M10,9h1v1h-1z M6,10h1v1h-1z M8,10h1v1h-1z M11,10h1v1h-1z M5,11h1v1h-1z M9,11h1v1h-1z M12,11h1v1h-1z M4,12h1v1h-1z M10,12h1v1h-1z M13,12h1v1h-1z M3,13h1v1h-1z M11,13h1v1h-1z M14,13h1v1h-1z M2,14h1v1h-1z M12,14h3v1h-3z\" /></svg>", style))
