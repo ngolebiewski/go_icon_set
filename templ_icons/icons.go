@@ -122,11 +122,29 @@ func Coin(cfg ...IconConfig) templ.Component {
 	})
 }
 
+// Copy renders the sharp vector icon for "copy"
+func Copy(cfg ...IconConfig) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		style := buildStyleAttr(cfg)
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M3,0h3v1h-3z M0,1h2v1h-2z M3,1h3v1h-3z M7,1h3v1h-3z M0,2h2v1h-2z M7,2h3v1h-3z M0,3h16v1h-16z M0,4h7v1h-7z M15,4h1v1h-1z M0,5h7v1h-7z M15,5h1v1h-1z M0,6h7v1h-7z M15,6h1v1h-1z M0,7h7v1h-7z M8,7h6v1h-6z M15,7h1v1h-1z M0,8h7v1h-7z M15,8h1v1h-1z M0,9h7v1h-7z M8,9h6v1h-6z M15,9h1v1h-1z M0,10h7v1h-7z M15,10h1v1h-1z M0,11h7v1h-7z M8,11h6v1h-6z M15,11h1v1h-1z M6,12h1v1h-1z M15,12h1v1h-1z M6,13h1v1h-1z M15,13h1v1h-1z M6,14h1v1h-1z M15,14h1v1h-1z M6,15h10v1h-10z\" /></svg>", style))
+		return err
+	})
+}
+
 // Crown renders the sharp vector icon for "crown"
 func Crown(cfg ...IconConfig) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 		style := buildStyleAttr(cfg)
 		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M2,5h1v1h-1z M6,5h1v1h-1z M10,5h1v1h-1z M14,5h1v1h-1z M2,6h1v1h-1z M6,6h1v1h-1z M10,6h1v1h-1z M14,6h1v1h-1z M2,7h1v1h-1z M4,7h1v1h-1z M6,7h1v1h-1z M8,7h1v1h-1z M10,7h1v1h-1z M12,7h1v1h-1z M14,7h1v1h-1z M3,8h1v1h-1z M5,8h1v1h-1z M7,8h1v1h-1z M9,8h1v1h-1z M11,8h1v1h-1z M13,8h1v1h-1z M3,9h1v1h-1z M5,9h1v1h-1z M7,9h1v1h-1z M9,9h1v1h-1z M11,9h1v1h-1z M13,9h1v1h-1z M3,10h1v1h-1z M13,10h1v1h-1z M3,11h1v1h-1z M13,11h1v1h-1z M4,12h1v1h-1z M12,12h1v1h-1z M4,13h9v1h-9z\" /></svg>", style))
+		return err
+	})
+}
+
+// Cut renders the sharp vector icon for "cut"
+func Cut(cfg ...IconConfig) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		style := buildStyleAttr(cfg)
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M1,3h4v1h-4z M15,3h1v1h-1z M0,4h1v1h-1z M5,4h1v1h-1z M13,4h2v1h-2z M0,5h1v1h-1z M5,5h1v1h-1z M12,5h2v1h-2z M1,6h6v1h-6z M10,6h3v1h-3z M6,7h2v1h-2z M9,7h2v1h-2z M7,8h3v1h-3z M6,9h2v1h-2z M9,9h2v1h-2z M1,10h6v1h-6z M10,10h3v1h-3z M0,11h1v1h-1z M5,11h1v1h-1z M12,11h2v1h-2z M0,12h1v1h-1z M5,12h1v1h-1z M13,12h2v1h-2z M1,13h4v1h-4z M15,13h1v1h-1z\" /></svg>", style))
 		return err
 	})
 }
@@ -316,6 +334,15 @@ func Out(cfg ...IconConfig) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
 		style := buildStyleAttr(cfg)
 		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M2,1h5v1h-5z M2,2h1v1h-1z M2,3h1v1h-1z M2,4h1v1h-1z M2,5h1v1h-1z M8,5h1v1h-1z M2,6h1v1h-1z M9,6h1v1h-1z M2,7h1v1h-1z M5,7h6v1h-6z M2,8h1v1h-1z M9,8h1v1h-1z M2,9h1v1h-1z M8,9h1v1h-1z M2,10h1v1h-1z M2,11h1v1h-1z M2,12h1v1h-1z M2,13h5v1h-5z\" /></svg>", style))
+		return err
+	})
+}
+
+// Paste renders the sharp vector icon for "paste"
+func Paste(cfg ...IconConfig) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) error {
+		style := buildStyleAttr(cfg)
+		_, err := io.WriteString(w, fmt.Sprintf("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" %s><path d=\"M4,0h10v1h-10z M4,1h1v1h-1z M13,1h1v1h-1z M4,2h1v1h-1z M13,2h1v1h-1z M1,3h4v1h-4z M13,3h1v1h-1z M1,4h1v1h-1z M4,4h1v1h-1z M6,4h6v1h-6z M13,4h1v1h-1z M1,5h1v1h-1z M4,5h1v1h-1z M13,5h1v1h-1z M1,6h1v1h-1z M4,6h1v1h-1z M6,6h6v1h-6z M13,6h1v1h-1z M1,7h1v1h-1z M4,7h1v1h-1z M13,7h1v1h-1z M1,8h1v1h-1z M4,8h1v1h-1z M6,8h6v1h-6z M13,8h1v1h-1z M1,9h1v1h-1z M4,9h1v1h-1z M13,9h1v1h-1z M1,10h1v1h-1z M4,10h1v1h-1z M13,10h1v1h-1z M1,11h1v1h-1z M4,11h1v1h-1z M13,11h1v1h-1z M1,12h1v1h-1z M4,12h10v1h-10z M1,13h1v1h-1z M10,13h1v1h-1z M1,14h1v1h-1z M10,14h1v1h-1z M1,15h10v1h-10z\" /></svg>", style))
 		return err
 	})
 }
