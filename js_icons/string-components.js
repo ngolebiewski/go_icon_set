@@ -1,16 +1,33 @@
 let globalSize = "16px";
 let globalColor = "white";
+let globalClass = "";
 
-export function setGlobalDefaults({ size, color } = {}) {
-	if (size) globalSize = size;
-	if (color) globalColor = color;
+export function setGlobalDefaults({ size, color, className } = {}) {
+    if (size) globalSize = size;
+    if (color) globalColor = color;
+    if (className) globalClass = className;
 }
 
 function renderIcon(path, config = {}) {
-	const size = config.size || globalSize;
-	const color = config.color || globalColor;
-	const style = "width: " + size + "; height: " + size + "; color: " + color + "; display: inline-block; vertical-align: middle;";
-	return "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" style=\"" + style + "\"><path d=\"" + path + "\" /></svg>";
+    const size = config.size || globalSize;
+    const color = config.color || globalColor;
+    const className = config.className || config.class || globalClass;
+    const alt = config.alt || "";
+
+    const style = "width: " + size + "; height: " + size + "; color: " + color + "; display: inline-block; vertical-align: middle;";
+    
+    let attrs = "style=\"" + style + "\" focusable=\"false\"";
+    if (className) {
+        attrs += " class=\"" + className + "\"";
+    }
+    
+    if (alt) {
+        attrs += " role=\"img\" aria-label=\"" + alt + "\"";
+    } else {
+        attrs += " aria-hidden=\"true\"";
+    }
+
+    return "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" shape-rendering=\"crispEdges\" fill=\"currentColor\" " + attrs + "><path d=\"" + path + "\" /></svg>";
 }
 export const Axe = (cfg) => renderIcon("M10,1h1v1h-1z M9,2h2v1h-2z M8,3h3v1h-3z M7,4h4v1h-4z M12,4h1v1h-1z M6,5h6v1h-6z M10,6h6v1h-6z M9,7h1v1h-1z M11,7h4v1h-4z M8,8h1v1h-1z M11,8h3v1h-3z M7,9h1v1h-1z M11,9h2v1h-2z M6,10h1v1h-1z M11,10h1v1h-1z M5,11h1v1h-1z M4,12h1v1h-1z M3,13h1v1h-1z M2,14h1v1h-1z", cfg);
 export const Bluesky = (cfg) => renderIcon("M2,2h2v1h-2z M11,2h2v1h-2z M1,3h4v1h-4z M10,3h4v1h-4z M1,4h5v1h-5z M9,4h5v1h-5z M1,5h6v1h-6z M8,5h6v1h-6z M1,6h13v1h-13z M2,7h11v1h-11z M3,8h9v1h-9z M5,9h5v1h-5z M3,10h9v1h-9z M2,11h11v1h-11z M2,12h5v1h-5z M8,12h5v1h-5z M3,13h3v1h-3z M10,13h2v1h-2z", cfg);

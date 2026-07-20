@@ -1,9 +1,24 @@
 import React from 'react';
 
-function Icon({ path, size = "16px", color = "white", ...props }) {
+function Icon({ path, size = "16px", color = "white", alt, className, ...props }) {
 	const style = { width: size, height: size, color: color, display: "inline-block", verticalAlign: "middle" };
+	
+	const a11yProps = alt 
+		? { role: "img", "aria-label": alt } 
+		: { "aria-hidden": "true" };
+
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shapeRendering="crispEdges" fill="currentColor" style={style} {...props}>
+		<svg 
+			xmlns="http://www.w3.org/2000/svg" 
+			viewBox="0 0 16 16" 
+			shapeRendering="crispEdges" 
+			fill="currentColor" 
+			style={style} 
+			className={className}
+			focusable="false"
+			{...a11yProps}
+			{...props}
+		>
 			<path d={path} />
 		</svg>
 	);

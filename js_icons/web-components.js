@@ -1,18 +1,32 @@
 class CrispIcon extends HTMLElement {
-	constructor() { super(); this.attachShadow({ mode: 'open' }); }
-	connectedCallback() {
-		const size = this.getAttribute('size') || '16px';
-		const color = this.getAttribute('color') || 'white';
-		const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-		svg.setAttribute('viewBox', '0 0 16 16');
-		svg.setAttribute('shape-rendering', 'crispEdges');
-		svg.setAttribute('fill', 'currentColor');
-		svg.style.cssText = "width: " + size + "; height: " + size + "; color: " + color + "; display: inline-block; vertical-align: middle;";
-		const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-		path.setAttribute('d', this.constructor.path || '');
-		svg.appendChild(path);
-		this.shadowRoot.appendChild(svg);
-	}
+    constructor() { super(); this.attachShadow({ mode: 'open' }); }
+    connectedCallback() {
+        const size = this.getAttribute('size') || '16px';
+        const color = this.getAttribute('color') || 'white';
+        const className = this.getAttribute('class') || '';
+        const alt = this.getAttribute('alt') || '';
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 16 16');
+        svg.setAttribute('shape-rendering', 'crispEdges');
+        svg.setAttribute('fill', 'currentColor');
+        svg.setAttribute('focusable', 'false');
+        
+        if (className) svg.setAttribute('class', className);
+        
+        if (alt) {
+            svg.setAttribute('role', 'img');
+            svg.setAttribute('aria-label', alt);
+        } else {
+            svg.setAttribute('aria-hidden', 'true');
+        }
+
+        svg.style.cssText = "width: " + size + "; height: " + size + "; color: " + color + "; display: inline-block; vertical-align: middle;";
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', this.constructor.path || '');
+        svg.appendChild(path);
+        this.shadowRoot.appendChild(svg);
+    }
 }
 export class Axe extends CrispIcon { static path = "M10,1h1v1h-1z M9,2h2v1h-2z M8,3h3v1h-3z M7,4h4v1h-4z M12,4h1v1h-1z M6,5h6v1h-6z M10,6h6v1h-6z M9,7h1v1h-1z M11,7h4v1h-4z M8,8h1v1h-1z M11,8h3v1h-3z M7,9h1v1h-1z M11,9h2v1h-2z M6,10h1v1h-1z M11,10h1v1h-1z M5,11h1v1h-1z M4,12h1v1h-1z M3,13h1v1h-1z M2,14h1v1h-1z"; }
 customElements.define("icon-axe", Axe);
